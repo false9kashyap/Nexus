@@ -54,12 +54,12 @@ const register = async()=>{
 
         "/auth/register",
 
-        {   name,
-            email,
-            password,
-            education,
-            designation,
-            interests: interests.split(",")
+        {   name: form.name,
+            email: form.email,
+            password: form.password,
+            education: form.education,
+            designation: form.designation,
+            interests: form.interests.split(",")
         }
     )
 
