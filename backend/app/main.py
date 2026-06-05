@@ -9,38 +9,20 @@ app = FastAPI(
 )
 
 
-# CORS SETTINGS
-origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-
-    # later add your deployed frontend URL here
-    # "https://your-frontend.vercel.app"
-]
-
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 
-
-# ROUTES
-
 app.include_router(auth.router)
-
 app.include_router(user.router)
-
 app.include_router(blog.router)
-
 app.include_router(ai.router)
-
 app.include_router(search.router)
-
 
 
 @app.get("/")
