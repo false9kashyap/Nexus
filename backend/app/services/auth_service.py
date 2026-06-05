@@ -13,11 +13,18 @@ SECRET_KEY = "mysecretkey"
 ALGORITHM = "HS256"
 
 
+def fix_password(password: str):
+
+    return password.encode("utf-8")[:72].decode(
+        "utf-8",
+        errors="ignore"
+    )
+
+
 
 def hash_password(password: str):
 
-    # bcrypt max password length = 72 bytes
-    password = password[:72]
+    password = fix_password(password)
 
     return pwd_context.hash(password)
 
@@ -28,7 +35,7 @@ def verify_password(
     hashed_password
 ):
 
-    plain_password = plain_password[:72]
+    plain_password = fix_password(plain_password)
 
     return pwd_context.verify(
         plain_password,
@@ -41,11 +48,9 @@ def create_access_token(data: dict):
 
     to_encode = data.copy()
 
-
     expire = datetime.utcnow() + timedelta(
         days=7
     )
-
 
     to_encode.update(
         {
