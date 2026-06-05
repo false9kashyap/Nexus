@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+
+
+*{
+
+    font-family:"Inter", sans-serif;
+
+}
+
+
+
+body{
+
+    background:#0f172a;
+
+    color:white;
+
+}
+
+
+
+
+
+
+/* COMMON INPUT STYLE FOR NEXUS */
+
+
+.input-style{
+
+
+    width:100%;
+
+
+    background:#0f172a;
+
+
+    border:1px solid #334155;
+
+
+    border-radius:12px;
+
+
+    padding:14px 18px;
+
+
+    margin-bottom:16px;
+
+
+    outline:none;
+
+
+    font-weight:300;
+
+
+    color:white;
+
+
+    transition:0.2s;
+
+
+}
+
+
+
+
+
+.input-style::placeholder{
+
+
+    color:#94a3b8;
+
+
+}
+
+
+
+
+
+
+.input-style:focus{
+
+
+    border-color:#3b82f6;
+
+
+}
+
+
+
+
+
+
+/* REMOVE DEFAULT BROWSER AUTOFILL WHITE BOX */
+
+
+input:-webkit-autofill{
+
+
+    -webkit-box-shadow:0 0 0px 1000px #0f172a inset;
+
+
+    -webkit-text-fill-color:white;
+
+
+}
+
+
+
+
+
+
+/* SMOOTH SCROLL */
+
+
+html{
+
+
+    scroll-behavior:smooth;
+
+
+}
