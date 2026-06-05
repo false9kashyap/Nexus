@@ -20,11 +20,13 @@ function Register() {
     })
 
 
+
     const handleChange = (e) => {
 
         setForm({
 
             ...form,
+
             [e.target.name]: e.target.value
 
         })
@@ -41,25 +43,33 @@ function Register() {
             const userData = {
 
                 name: form.name,
+
                 email: form.email,
+
                 password: form.password,
-                education: form.education,
-                designation: form.designation,
+
+                college: form.education,
+
+                profession: form.designation,
 
                 interests: form.interests
-                    .split(",")
-                    .map(item => item.trim())
 
             }
+
 
 
             console.log(userData)
 
 
+
             await API.post(
+
                 "/auth/register",
+
                 userData
+
             )
+
 
 
             navigate("/login")
@@ -67,11 +77,18 @@ function Register() {
 
         } catch (error) {
 
-            console.log(error.response?.data)
+
+            console.log(
+                error.response?.data
+            )
+
 
             alert(
+
                 error.response?.data?.detail ||
+
                 "Registration failed"
+
             )
 
         }
@@ -96,6 +113,7 @@ function Register() {
             pb-10
             "
         >
+
 
 
             <div
@@ -124,7 +142,6 @@ function Register() {
                     Join NEXUS
 
                 </h1>
-
 
 
 
@@ -185,6 +202,8 @@ function Register() {
 
 
 
+
+
                 <button
 
                     onClick={register}
@@ -211,6 +230,7 @@ function Register() {
 
 
 
+
                 <p
                     className="
                     text-center
@@ -220,10 +240,12 @@ function Register() {
                     "
                 >
 
+
                     Already a user?{" "}
 
 
                     <Link
+
                         to="/login"
 
                         className="
@@ -231,6 +253,7 @@ function Register() {
                         hover:text-blue-500
                         transition
                         "
+
                     >
 
                         Login
@@ -238,13 +261,17 @@ function Register() {
                     </Link>
 
 
+
                 </p>
+
 
 
             </div>
 
 
+
         </div>
+
 
     )
 
