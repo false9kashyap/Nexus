@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field
-from typing import List, Optional
+from typing import Optional
 
 
 class UserCreate(BaseModel):
@@ -12,14 +12,14 @@ class UserCreate(BaseModel):
     email: EmailStr
 
     password: str = Field(
-        min_length=8
+        min_length=4
     )
 
-    education: str
+    college: str
 
-    designation: str
+    profession: str
 
-    interests: List[str]
+    interests: str
 
     bio: Optional[str] = None
 
