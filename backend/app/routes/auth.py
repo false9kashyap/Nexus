@@ -90,8 +90,8 @@ async def login(user: UserLogin):
 
 
     return {
-    "message": f"Welcome {db_user['name']}",
-    "name": db_user["name"],
+    "message": f"Welcome {db_user.get('name', 'User')}",
+    "name": db_user.get("name", "User"),
     "access_token": token,
     "token_type": "bearer"
 }
