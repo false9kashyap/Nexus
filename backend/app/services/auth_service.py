@@ -5,7 +5,8 @@ from datetime import datetime, timedelta
 
 pwd_context = CryptContext(
     schemes=["bcrypt"],
-    deprecated="auto"
+    deprecated="auto",
+    bcrypt__truncate_error=False
 )
 
 
@@ -13,20 +14,11 @@ SECRET_KEY = "mysecretkey"
 ALGORITHM = "HS256"
 
 
-def fix_password(password: str):
-
-    return password.encode("utf-8")[:72].decode(
-        "utf-8",
-        errors="ignore"
-    )
-
-
-
 def hash_password(password: str):
 
-    password = fix_password(password)
-
-    return pwd_context.hash(password)
+    return pwd_context.hash(
+        password[:72]
+    )
 
 
 
@@ -35,10 +27,8 @@ def verify_password(
     hashed_password
 ):
 
-    plain_password = fix_password(plain_password)
-
     return pwd_context.verify(
-        plain_password,
+        plain_password[:72],
         hashed_password
     )
 
@@ -59,11 +49,8 @@ def create_access_token(data: dict):
     )
 
 
-    token = jwt.encode(
+    return jwt.encode(
         to_encode,
         SECRET_KEY,
         algorithm=ALGORITHM
     )
-
-
-    return token
