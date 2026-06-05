@@ -13,16 +13,22 @@ SECRET_KEY = "mysecretkey"
 ALGORITHM = "HS256"
 
 
+
 def hash_password(password: str):
+
+    # bcrypt max password length = 72 bytes
+    password = password[:72]
 
     return pwd_context.hash(password)
 
 
 
 def verify_password(
-        plain_password,
-        hashed_password
+    plain_password,
+    hashed_password
 ):
+
+    plain_password = plain_password[:72]
 
     return pwd_context.verify(
         plain_password,
