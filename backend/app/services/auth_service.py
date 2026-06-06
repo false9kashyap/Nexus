@@ -5,8 +5,7 @@ from datetime import datetime, timedelta
 
 pwd_context = CryptContext(
     schemes=["bcrypt"],
-    deprecated="auto",
-    bcrypt__truncate_error=False
+    deprecated="auto"
 )
 
 
@@ -17,7 +16,7 @@ ALGORITHM = "HS256"
 def hash_password(password: str):
 
     return pwd_context.hash(
-        password[:72]
+        password
     )
 
 
@@ -28,7 +27,7 @@ def verify_password(
 ):
 
     return pwd_context.verify(
-        plain_password[:72],
+        plain_password,
         hashed_password
     )
 
