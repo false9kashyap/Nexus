@@ -334,10 +334,15 @@ Interests
 
 <div className="flex gap-3 flex-wrap">
 
-
 {
 
-user.interests?.map((interest,index)=>(
+(
+    Array.isArray(user.interests)
+        ? user.interests
+        : user.interests
+            ? [user.interests]
+            : []
+).map((interest,index)=>(
 
 
 <span
@@ -365,9 +370,6 @@ font-light
 
 
 </div>
-
-
-
 
 
 </div>
